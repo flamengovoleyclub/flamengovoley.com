@@ -1,0 +1,76 @@
+# ==============================================================================
+# CONFIGURACIÓN DEL SERVIDOR APACHE (HOSTINGER) — FLAMENGO VOLEIBOL
+# Dominio: flamengovoley.com
+# ==============================================================================
+
+# 1. MOTOR DE REESCRITURA
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Forzar HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Redireccionar www a sin-www (o viceversa para evitar contenido duplicado)
+  RewriteCond %{HTTP_HOST} ^www\.flamengovoley\.com [NC]
+  RewriteRule ^(.*)$ https://flamengovoley.com/$1 [L,R=301]
+
+  # Limpieza de URLs: Permitir acceder sin .html
+  # Ejemplo: /grupos sirve grupos.html
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+
+  # Redirección si se solicita explícitamente el .html en la URL a la versión limpia
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/([^.]+)\.html [NC]
+  RewriteRule ^%1$ [R=301,L]
+</IfModule>
+
+# 2. PÁGINA DE ERROR 404 PERSONALIZADA
+ErrorDocument 404 /404.html
+
+# 3. COMPRESIÓN GZIP / DEFLATE (CORE WEB VITALS)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/woff
+  AddOutputFilterByType DEFLATE font/woff2
+</IfModule>
+
+# 4. POLÍTICA DE CACHÉ EN NAVEGADOR
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  # HTML: no cachear demasiado para reflejar cambios del admin rápidamente
+  ExpiresByType text/html "access plus 1 hour"
+
+  # CSS y JavaScript
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType text/javascript "access plus 1 week"
+
+  # Imágenes y Fuentes
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpg "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# 5. CABECERAS DE SEGURIDAD
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

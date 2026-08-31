@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6584" />
+      <stop offset="50%" stop-color="#FF3366" />
+      <stop offset="100%" stop-color="#D81B4E" />
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FAF8F5" />
+      <stop offset="100%" stop-color="#E2DCD5" />
+    </linearGradient>
+    <filter id="flameGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Escudo / Isotipo Flamengo Voleibol -->
+  <g transform="translate(10, 10)">
+    <!-- Base Shield Dark -->
+    <path d="M 40 0 L 72 12 C 72 52 40 76 40 78 C 40 76 8 52 8 12 Z" fill="#0E0F12" stroke="url(#pinkGrad)" stroke-width="2.5" />
+    
+    <!-- Inner Flame / Wing -->
+    <path d="M 40 6 C 56 22 62 38 52 56 C 46 44 40 40 38 30 C 36 40 28 48 24 42 C 22 34 26 22 40 6 Z" fill="url(#pinkGrad)" opacity="0.95" />
+    
+    <!-- Volleyball Ball in Motion -->
+    <circle cx="40" cy="46" r="16" fill="#FAF8F5" stroke="#0E0F12" stroke-width="1.8" />
+    <path d="M 30 36 C 36 42 44 42 50 36" fill="none" stroke="#FF3366" stroke-width="1.8" />
+    <path d="M 40 30 L 40 62" fill="none" stroke="#0E0F12" stroke-width="1.8" />
+    <path d="M 26 52 C 34 48 40 54 48 60" fill="none" stroke="#FF3366" stroke-width="1.8" />
+    <path d="M 52 40 C 44 46 38 46 32 58" fill="none" stroke="#0E0F12" stroke-width="1.8" />
+    
+    <!-- Small Star Accent -->
+    <polygon points="40,14 42,19 47,19 43,22 45,27 40,24 35,27 37,22 33,19 38,19" fill="#FAF8F5" />
+  </g>
+
+  <!-- Tipografía FLAMENGO -->
+  <text x="100" y="52" font-family="'Outfit', 'Montserrat', 'Inter', sans-serif" font-weight="900" font-size="34" letter-spacing="3.5" fill="#FAF8F5">
+    FLAMENGO
+  </text>
+  
+  <!-- Subtítulo VOLEIBOL -->
+  <text x="102" y="78" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-weight="800" font-size="15" letter-spacing="6.5" fill="#FF4B72">
+    VOLEIBOL
+  </text>
+  <text x="258" y="78" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-weight="600" font-size="11" letter-spacing="2.5" fill="#9EA3B0">
+    BOGOTÁ
+  </text>
+
+  <!-- Accent line -->
+  <line x1="102" y1="84" x2="330" y2="84" stroke="url(#pinkGrad)" stroke-width="2" stroke-linecap="round" />
+</svg>

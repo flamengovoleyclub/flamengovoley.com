@@ -1,0 +1,317 @@
+/* ==========================================================================
+   SISTEMA DE DISEÑO GLOBAL — FLAMENGO VOLEIBOL
+   Paleta: Blanco Hueso, Rosa Soft Pink / Rosa Flamengo, Negro Atlético
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Paleta Oficial */
+  --bone-white: #FAF8F5;
+  --bone-white-pure: #FFFFFF;
+  --bone-muted: #E4DFD7;
+  --bone-subtle: #C9C3B7;
+
+  --pink-primary: #FF4B72;
+  --pink-vibrant: #FF2855;
+  --pink-soft: #FF7597;
+  --pink-dark: #C91D45;
+  --pink-light: #FFF0F4;
+  --pink-glow: rgba(255, 75, 114, 0.28);
+  --pink-glow-strong: rgba(255, 75, 114, 0.5);
+
+  --black-bg: #0A0B0E;
+  --black-surface: #12141A;
+  --black-card: #171A22;
+  --black-card-hover: #1F232E;
+  --black-border: rgba(250, 248, 245, 0.08);
+  --black-border-hover: rgba(255, 75, 114, 0.4);
+
+  --text-primary: #FAF8F5;
+  --text-secondary: #C8CDD6;
+  --text-muted: #8E95A5;
+  --text-dark: #0A0B0E;
+
+  /* Colores de estado y utilidad */
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #20BA5A;
+  --color-success: #10B981;
+  --color-gold: #FFB800;
+
+  /* Tipografías */
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Espaciados y estructura */
+  --container-width: 1240px;
+  --container-padding: 1.5rem;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 9999px;
+
+  /* Sombras y transiciones */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.6);
+  --shadow-pink: 0 8px 30px rgba(255, 75, 114, 0.35);
+
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ==========================================================================
+   RESET Y ESTILOS BASE
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--black-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selección de texto */
+::selection {
+  background-color: var(--pink-primary);
+  color: var(--bone-white);
+}
+
+/* Barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--black-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #252A36;
+  border-radius: 5px;
+  border: 2px solid var(--black-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pink-primary);
+}
+
+/* Enlaces y botones */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ==========================================================================
+   LAYOUT Y CONTENEDORES
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.section {
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+  position: relative;
+}
+
+.section-alt {
+  background-color: var(--black-surface);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3.5rem;
+}
+
+.section-header.text-left {
+  text-align: left;
+  margin-left: 0;
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 75, 114, 0.12);
+  border: 1px solid rgba(255, 75, 114, 0.3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.825rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pink-soft);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--bone-white);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.section-title span {
+  color: var(--pink-primary);
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   TIPOGRAFÍA Y HEADINGS
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--bone-white) 0%, var(--pink-soft) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-pink {
+  color: var(--pink-primary) !important;
+}
+
+.text-bone {
+  color: var(--bone-white) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* ==========================================================================
+   ACCESIBILIDAD Y SEO
+   ========================================================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Saltarse al contenido principal */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 20px;
+  background: var(--pink-primary);
+  color: var(--bone-white);
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  z-index: 9999;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 20px;
+}
+
+/* ==========================================================================
+   EFECTOS Y MICROANIMACIONES
+   ========================================================================== */
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 75, 114, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 75, 114, 0.75);
+  }
+}
+
+@keyframes floatBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes ping {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.pulse-animation {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* Responsividad general */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1.25rem;
+  }
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+}

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración | Flamengo Voleibol</title>
+  <meta name="robots" content="noindex, nofollow">
+  
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- PANTALLA DE BLOQUEO POR PIN -->
+  <div id="admin-lock-screen" class="admin-lock-screen">
+    <div class="admin-lock-box">
+      <img src="assets/images/logo.png" alt="Flamengo Voleibol" style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem auto; display: block; border: 2px solid rgba(255,75,114,0.5);">
+      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.5rem; margin-bottom: 0.5rem;">Panel Administrativo</h2>
+      <p style="color: #8E95A5; font-size: 0.9rem; margin-bottom: 1.8rem;">Ingresa tu PIN de seguridad para gestionar los contenidos del club.</p>
+      
+      <form id="admin-pin-form">
+        <div style="margin-bottom: 1.2rem;">
+          <input type="password" id="admin-pin-input" class="admin-input" placeholder="PIN de acceso (ej: flamengo2026)" style="text-align: center; font-size: 1.1rem; letter-spacing: 0.15em;" required autofocus>
+          <div id="admin-pin-error" style="color: #EF4444; font-size: 0.8rem; margin-top: 0.5rem; display: none;">PIN incorrecto. Intenta nuevamente.</div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">ACCEDER AL PANEL</button>
+      </form>
+      <div style="margin-top: 1.5rem;">
+        <a href="index.html" style="color: #8E95A5; font-size: 0.85rem; text-decoration: underline;">← Volver al sitio público</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER DEL ADMIN -->
+  <header class="admin-header">
+    <div class="admin-brand">
+      <a href="index.html" style="display: flex; align-items: center; gap: 0.6rem; text-decoration: none;">
+        <img src="assets/images/logo.png" alt="Flamengo Voleibol" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(255,75,114,0.5);">
+      </a>
+      <span class="admin-brand-title">Panel CMS</span>
+      <span class="admin-brand-badge">Parque Carvajal</span>
+    </div>
+
+    <div class="admin-header-actions">
+      <a href="index.html" target="_blank" class="btn btn-sm btn-secondary">
+        🌐 Ver Sitio en Vivo
+      </a>
+      <button type="button" class="btn btn-sm btn-primary btn-save-all-config">
+        💾 Guardar Cambios
+      </button>
+      <button type="button" id="btn-logout" class="btn btn-sm btn-secondary" style="color: #EF4444;">
+        Salir
+      </button>
+    </div>
+  </header>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="admin-layout">
+    
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <button type="button" class="admin-tab-btn active" data-tab="general">
+        <span>📌</span> Información General
+      </button>
+      <button type="button" class="admin-tab-btn" data-tab="grupos">
+        <span>👥</span> Categorías y Grupos
+      </button>
+      <button type="button" class="admin-tab-btn" data-tab="planes">
+        <span>💰</span> Planes y Tarifas
+      </button>
+      <button type="button" class="admin-tab-btn" data-tab="hero">
+        <span>🏐</span> Hero & Textos
+      </button>
+      <button type="button" class="admin-tab-btn" data-tab="entrenadores">
+        <span>🧢</span> Entrenadores
+      </button>
+      <button type="button" class="admin-tab-btn" data-tab="resultados">
+        <span>🏆</span> Marcador y Partidos
+      </button>
+      <button type="button" class="admin-tab-btn" data-tab="faq">
+        <span>❓</span> Preguntas Frecuentes
+      </button>
+      <button type="button" class="admin-tab-btn" data-tab="leads">
+        <span>📬</span> Solicitudes Recibidas
+      </button>
+      <button type="button" class="admin-tab-btn" data-tab="backup">
+        <span>💾</span> Respaldos JSON
+      </button>
+    </aside>
+
+    <!-- CONTENIDO DE LAS PESTAÑAS -->
+    <main class="admin-content">
+
+      <!-- PESTAÑA 1: INFORMACIÓN GENERAL -->
+      <section id="tab-general" class="admin-tab-pane active">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h2 class="admin-card-title">Datos Principales del Club</h2>
+            <button type="button" class="btn btn-sm btn-primary btn-save-all-config">Guardar Información</button>
+          </div>
+          <div class="admin-grid-2">
+            <div class="admin-field">
+              <label class="admin-label">Nombre Oficial del Club</label>
+              <input type="text" id="admin-club-name" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Slogan o Lema</label>
+              <input type="text" id="admin-tagline" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">WhatsApp (Formato internacional, ej: +573025145457)</label>
+              <input type="text" id="admin-whatsapp" class="admin-input">
+              <span class="admin-helper">Número directo al que llegarán las reservas.</span>
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">WhatsApp Visible (Texto, ej: 302 514 5457)</label>
+              <input type="text" id="admin-whatsapp-display" class="admin-input">
+            </div>
+            <div class="admin-field span-2">
+              <label class="admin-label">Dirección y Sede Oficial en Bogotá</label>
+              <input type="text" id="admin-address" class="admin-input" placeholder="Parque Carvajal — Calle 34 Sur # 69C - 60, Bogotá D.C.">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Zona / Localidad Principal</label>
+              <input type="text" id="admin-locality" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Valor de Inscripción</label>
+              <input type="text" id="admin-registration-fee" class="admin-input" placeholder="$90.000 COP (Incluye Uniforme Oficial)">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Enlace de Instagram</label>
+              <input type="text" id="admin-instagram" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Correo Electrónico</label>
+              <input type="email" id="admin-email" class="admin-input">
+            </div>
+            <div class="admin-field span-2">
+              <label class="admin-label">Enlace a Google Maps ("Cómo Llegar")</label>
+              <input type="text" id="admin-maps-url" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">PIN de Seguridad del Panel</label>
+              <input type="password" id="admin-pin" class="admin-input">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PESTAÑA 2: GRUPOS Y CATEGORÍAS -->
+      <section id="tab-grupos" class="admin-tab-pane">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <div>
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.6rem;">Categorías de Entrenamiento</h2>
+            <p style="color: #8E95A5; font-size: 0.85rem;">Puedes editar los textos, precios, horarios, o agregar/eliminar categorías.</p>
+          </div>
+          <div style="display: flex; gap: 0.8rem;">
+            <button type="button" class="btn btn-secondary" onclick="addNewGroup()">+ Agregar Nueva Categoría</button>
+            <button type="button" class="btn btn-primary btn-save-all-config">💾 Guardar Cambios</button>
+          </div>
+        </div>
+        
+        <div id="admin-groups-container">
+          <!-- Inyectado dinámicamente -->
+        </div>
+      </section>
+
+      <!-- PESTAÑA 3: PLANES Y TARIFAS -->
+      <section id="tab-planes" class="admin-tab-pane">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <div>
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.6rem;">Planes y Mensualidades</h2>
+            <p style="color: #8E95A5; font-size: 0.85rem;">Precios oficiales de las mensualidades e inscripción.</p>
+          </div>
+          <button type="button" class="btn btn-primary btn-save-all-config">💾 Guardar Planes</button>
+        </div>
+        
+        <div id="admin-plans-container">
+          <!-- Inyectado dinámicamente -->
+        </div>
+      </section>
+
+      <!-- PESTAÑA 4: HERO & TEXTOS -->
+      <section id="tab-hero" class="admin-tab-pane">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h2 class="admin-card-title">Encabezado y Mensaje de Conversión</h2>
+            <button type="button" class="btn btn-sm btn-primary btn-save-all-config">Guardar Hero</button>
+          </div>
+          <div class="admin-grid-2">
+            <div class="admin-field span-2">
+              <label class="admin-label">Etiqueta Superior (Badge)</label>
+              <input type="text" id="admin-hero-badge" class="admin-input">
+            </div>
+            <div class="admin-field span-2">
+              <label class="admin-label">Título Principal (H1)</label>
+              <input type="text" id="admin-hero-title" class="admin-input">
+            </div>
+            <div class="admin-field span-2">
+              <label class="admin-label">Subtítulo Descriptivo</label>
+              <textarea id="admin-hero-subtitle" class="admin-textarea" rows="3"></textarea>
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Texto Botón Primario (CTA 1)</label>
+              <input type="text" id="admin-hero-cta1" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Texto Botón Secundario (CTA 2)</label>
+              <input type="text" id="admin-hero-cta2" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Indicador de Confianza 1</label>
+              <input type="text" id="admin-hero-trust1" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Indicador de Confianza 2</label>
+              <input type="text" id="admin-hero-trust2" class="admin-input">
+            </div>
+            <div class="admin-field span-2">
+              <label class="admin-label">Indicador de Confianza 3</label>
+              <input type="text" id="admin-hero-trust3" class="admin-input">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PESTAÑA 5: ENTRENADORES -->
+      <section id="tab-entrenadores" class="admin-tab-pane">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <div>
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.6rem;">Cuerpo Técnico (Didier y Eber)</h2>
+            <p style="color: #8E95A5; font-size: 0.85rem;">Configura si deseas mostrar u ocultar la sección de entrenadores en el sitio web.</p>
+          </div>
+          <button type="button" class="btn btn-primary btn-save-all-config">💾 Guardar Entrenadores</button>
+        </div>
+
+        <div class="admin-card" style="background: rgba(255, 75, 114, 0.08); border-color: rgba(255, 75, 114, 0.3); margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 style="font-size: 1.1rem; color: #FAF8F5; margin-bottom: 0.25rem;">👁️ Visibilidad en la Web Pública</h3>
+              <p style="font-size: 0.85rem; color: #8E95A5;">Activa o desactiva para mostrar los profesores en las tarjetas de grupos y la sección de cuerpo técnico.</p>
+            </div>
+            <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; background: #0D0E12; padding: 0.7rem 1.2rem; border-radius: 8px; border: 1px solid rgba(250,248,245,0.15);">
+              <input type="checkbox" id="admin-show-coaches" style="width: 20px; height: 20px; accent-color: #FF4B72;">
+              <span style="font-weight: 700; font-size: 0.9rem; color: #FAF8F5;">Mostrar Entrenadores en la Web</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="admin-coaches-container">
+          <!-- Inyectado dinámicamente -->
+        </div>
+      </section>
+
+      <!-- PESTAÑA 6: RESULTADOS Y COMPETENCIA -->
+      <section id="tab-resultados" class="admin-tab-pane">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h2 class="admin-card-title">Último Partido Jugado</h2>
+            <button type="button" class="btn btn-sm btn-primary btn-save-all-config">Guardar Marcador</button>
+          </div>
+          <div class="admin-grid-3">
+            <div class="admin-field">
+              <label class="admin-label">Estado</label>
+              <input type="text" id="admin-match-status" class="admin-input">
+            </div>
+            <div class="admin-field span-2">
+              <label class="admin-label">Torneo o Encuentro</label>
+              <input type="text" id="admin-match-tournament" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Equipo Local</label>
+              <input type="text" id="admin-match-home" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Sets Flamengo</label>
+              <input type="text" id="admin-match-score-home" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Sets Rival</label>
+              <input type="text" id="admin-match-score-away" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Equipo Rival</label>
+              <input type="text" id="admin-match-away" class="admin-input">
+            </div>
+            <div class="admin-field span-2">
+              <label class="admin-label">Nota del Partido</label>
+              <input type="text" id="admin-match-note" class="admin-input">
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h2 class="admin-card-title">Próximo Partido Programado</h2>
+          </div>
+          <div class="admin-grid-2">
+            <div class="admin-field">
+              <label class="admin-label">Torneo / Fogueo</label>
+              <input type="text" id="admin-next-tournament" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Fecha y Hora</label>
+              <input type="text" id="admin-next-date" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Sede / Cancha</label>
+              <input type="text" id="admin-next-location" class="admin-input">
+            </div>
+            <div class="admin-field">
+              <label class="admin-label">Rival</label>
+              <input type="text" id="admin-next-rival" class="admin-input">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PESTAÑA 7: FAQ -->
+      <section id="tab-faq" class="admin-tab-pane">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.6rem;">Preguntas Frecuentes (FAQ)</h2>
+          <div style="display: flex; gap: 0.8rem;">
+            <button type="button" class="btn btn-secondary" onclick="addNewFaq()">+ Nueva Pregunta</button>
+            <button type="button" class="btn btn-primary btn-save-all-config">💾 Guardar Preguntas</button>
+          </div>
+        </div>
+        <div id="admin-faq-container">
+          <!-- Inyectado dinámicamente -->
+        </div>
+      </section>
+
+      <!-- PESTAÑA 8: LEADS -->
+      <section id="tab-leads" class="admin-tab-pane">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h2 class="admin-card-title">Reservas de Clases de Cortesía</h2>
+              <p style="color: #8E95A5; font-size: 0.85rem;" id="admin-leads-count"></p>
+            </div>
+            <button type="button" class="btn btn-sm btn-secondary" onclick="renderLeadsTable()">🔄 Actualizar</button>
+          </div>
+
+          <div class="admin-table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>WhatsApp</th>
+                  <th>Categoría</th>
+                  <th>Experiencia</th>
+                  <th>Fecha</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="admin-leads-tbody">
+                <!-- Inyectado dinámicamente -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- PESTAÑA 9: RESPALDOS Y RESET -->
+      <section id="tab-backup" class="admin-tab-pane">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h2 class="admin-card-title">Copias de Seguridad (Backup JSON)</h2>
+          </div>
+          <p style="color: #C8CDD6; font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6;">
+            Descarga un respaldo con todos los datos y cambios actuales de tu sitio web:
+          </p>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+            <button type="button" id="btn-export-backup" class="btn btn-primary">
+              📥 Descargar Configuración JSON
+            </button>
+
+            <label class="btn btn-secondary" style="cursor: pointer;">
+              📤 Cargar Archivo JSON
+              <input type="file" id="admin-import-file" accept=".json" style="display: none;">
+            </label>
+          </div>
+
+          <hr style="border: 0; border-top: 1px solid rgba(250,248,245,0.08); margin: 2rem 0;">
+
+          <div class="admin-card-header">
+            <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.2rem; color: #EF4444;">Restablecer a Datos Oficiales</h3>
+          </div>
+          <p style="color: #8E95A5; font-size: 0.875rem; margin-bottom: 1rem;">
+            Restablece los datos a las categorías oficiales (Masculina Menores y Femenino Infantil en Parque Carvajal, 3025145457, $75k/$60k/$90k):
+          </p>
+          <button type="button" id="btn-reset-defaults" class="btn btn-secondary" style="color: #EF4444; border-color: rgba(239,68,68,0.3);">
+            ⚠️ Restablecer a Datos Oficiales Actualizados
+          </button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div id="admin-toast" class="toast-msg"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Robots.txt — Flamengo Voleibol (Bogotá, Colombia)
+# Dominio: https://flamengovoley.com/
+
+User-agent: *
+Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+
+# Bloquear indexación de áreas administrativas y privadas
+Disallow: /admin.html
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Sitemap Oficial
+Sitemap: https://flamengovoley.com/sitemap.xml

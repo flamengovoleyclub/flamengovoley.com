@@ -1,0 +1,325 @@
+/* ==========================================================================
+   PANEL DE ADMINISTRACIÓN (CMS) — FLAMENGO VOLEIBOL
+   Paleta: Blanco Hueso (#FAF8F5), Rosa Flamengo (#FF4B72), Carbón Oscuro (#0F1117)
+   ========================================================================== */
+
+.admin-body {
+  background-color: #0A0B0E;
+  color: #FAF8F5;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-header {
+  background: #12141A;
+  border-bottom: 1px solid rgba(250, 248, 245, 0.08);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-brand img {
+  height: 40px;
+}
+
+.admin-brand-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FAF8F5;
+}
+
+.admin-brand-badge {
+  font-size: 0.75rem;
+  background: rgba(255, 75, 114, 0.15);
+  color: #FF7597;
+  border: 1px solid rgba(255, 75, 114, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-weight: 700;
+}
+
+.admin-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Layout del panel con Sidebar y Contenido */
+.admin-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  flex: 1;
+}
+
+.admin-sidebar {
+  background: #101218;
+  border-right: 1px solid rgba(250, 248, 245, 0.08);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #8E95A5;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.admin-tab-btn:hover {
+  background: rgba(250, 248, 245, 0.05);
+  color: #FAF8F5;
+}
+
+.admin-tab-btn.active {
+  background: #FF4B72;
+  color: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(255, 75, 114, 0.35);
+  font-weight: 700;
+}
+
+.admin-tab-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.admin-content {
+  padding: 2.5rem;
+  overflow-y: auto;
+  max-width: 1100px;
+}
+
+.admin-tab-pane {
+  display: none;
+}
+
+.admin-tab-pane.active {
+  display: block;
+  animation: fadeIn 0.25s ease;
+}
+
+/* Tarjetas de formulario del Admin */
+.admin-card {
+  background: #151821;
+  border: 1px solid rgba(250, 248, 245, 0.08);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.admin-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(250, 248, 245, 0.08);
+}
+
+.admin-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #FAF8F5;
+}
+
+.admin-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+
+.admin-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.admin-field.span-2 {
+  grid-column: span 2;
+}
+
+.admin-field.span-3 {
+  grid-column: span 3;
+}
+
+.admin-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #C8CDD6;
+}
+
+.admin-input, .admin-textarea, .admin-select {
+  background: #0D0E12;
+  border: 1px solid rgba(250, 248, 245, 0.12);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  color: #FAF8F5;
+  font-size: 0.925rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.admin-input:focus, .admin-textarea:focus, .admin-select:focus {
+  border-color: #FF4B72;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 75, 114, 0.2);
+}
+
+.admin-helper {
+  font-size: 0.775rem;
+  color: #8E95A5;
+}
+
+/* Tabla de Leads en Admin */
+.admin-table-wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(250, 248, 245, 0.08);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.admin-table th {
+  background: #111319;
+  padding: 1rem;
+  color: #FAF8F5;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(250, 248, 245, 0.1);
+}
+
+.admin-table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(250, 248, 245, 0.06);
+  color: #C8CDD6;
+}
+
+.admin-table tr:hover td {
+  background: rgba(250, 248, 245, 0.02);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.status-pendiente {
+  background: rgba(255, 184, 0, 0.15);
+  color: #FFB800;
+}
+
+.status-contactado {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60A5FA;
+}
+
+.status-confirmado {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34D399;
+}
+
+/* Toast de notificación */
+.toast-msg {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #10B981;
+  color: #FFFFFF;
+  padding: 1rem 1.8rem;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  animation: fadeIn 0.25s ease;
+}
+
+.toast-msg.error {
+  background: #EF4444;
+}
+
+/* Pantalla de bloqueo con PIN */
+.admin-lock-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0A0B0E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1.5rem;
+}
+
+.admin-lock-box {
+  background: #151821;
+  border: 1px solid rgba(255, 75, 114, 0.3);
+  border-radius: 20px;
+  padding: 3rem 2.5rem;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 75, 114, 0.15);
+}
+
+@media (max-width: 860px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+  .admin-sidebar {
+    border-right: none;
+    border-bottom: 1px solid rgba(250, 248, 245, 0.08);
+  }
+  .admin-content {
+    padding: 1.5rem;
+  }
+  .admin-grid-2, .admin-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .admin-field.span-2, .admin-field.span-3 {
+    grid-column: span 1;
+  }
+}
