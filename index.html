@@ -141,8 +141,9 @@
       </nav>
 
       <div class="navbar-actions">
-        <a href="#entrenamiento-prueba" class="btn btn-sm btn-primary btn-track-entrenar" data-location="navbar">
-          RESERVAR CLASE DE CORTESÍA
+        <a href="#entrenamiento-prueba" class="btn btn-sm btn-primary btn-track-entrenar" data-location="navbar"
+          aria-label="Reservar clase de cortesía en la barra de navegación">
+          RESERVAR CORTESÍA
         </a>
         <a href="admin.html" class="admin-link-badge" title="Acceso al Panel de Administración">
           Admin ⚙️
@@ -171,8 +172,8 @@
     </nav>
     <div style="margin-top: auto; display: flex; flex-direction: column; gap: 1rem;">
       <a href="#entrenamiento-prueba" class="btn btn-primary btn-block btn-track-entrenar"
-        data-location="mobile_drawer">
-        🏐 RESERVAR CLASE DE CORTESÍA
+        data-location="mobile_drawer" aria-label="Agendar clase de cortesía gratis desde el menú móvil">
+        🏐 AGENDAR CLASE GRATIS
       </a>
       <a href="#" class="btn btn-whatsapp btn-block dynamic-whatsapp-link" target="_blank" rel="noopener noreferrer">
         💬 Escribir al WhatsApp Oficial
@@ -961,7 +962,7 @@
               </a>
               <a href="#entrenamiento-prueba" class="btn btn-secondary btn-track-entrenar"
                 data-location="ubicacion_card" aria-label="Reservar clase de cortesía en Parque Carvajal">
-                RESERVAR CLASE DE CORTESÍA
+                ASISTIR A PARQUE CARVAJAL
               </a>
             </div>
           </div>
@@ -1101,7 +1102,7 @@
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-bottom: 2.5rem;">
           <a href="#entrenamiento-prueba" class="btn btn-lg btn-primary btn-track-entrenar pulse-animation"
             data-location="contacto_bottom" aria-label="Reservar clase de cortesía en formulario">
-            RESERVAR CLASE DE CORTESÍA
+            RESERVAR MI CLASE GRATIS
           </a>
           <a href="#" class="btn btn-lg btn-whatsapp dynamic-whatsapp-link" target="_blank" rel="noopener noreferrer"
             aria-label="Contactar por WhatsApp Oficial">
@@ -1183,7 +1184,7 @@
                 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 900; color: var(--bone-white); display: block;">FLAMENGO</span>
               <span
                 style="font-size: 0.7rem; font-weight: 700; color: var(--pink-primary); letter-spacing: 0.1em;">VOLEY
-                CLUB CBF</span>
+                CLUB BOGOTÁ</span>
             </div>
           </a>
           <p class="footer-motto">
@@ -1192,6 +1193,7 @@
           <div class="footer-social-links">
             <a href="#" class="social-icon-btn dynamic-whatsapp-link" target="_blank" rel="noopener noreferrer"
               aria-label="WhatsApp Flamengo Voleibol">
+              <span class="sr-only">WhatsApp Flamengo</span>
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                 <path
                   d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.001-.468-1.583-.655-2.612-2.264-2.69-2.368-.078-.104-.645-.859-.645-1.637 0-.777.407-1.16.551-1.32.144-.16.315-.2.42-.2.105 0 .21.001.301.006.098.005.228-.037.357.273.132.315.45.1.096.49.1.189.042.062.062.062.062l-.004.004c-.053.076-.11.144-.166.212-.083.1-.173.208-.073.38.1.173.447.737 1.077 1.299.811.724 1.493.948 1.706 1.054.213.105.338.089.463-.053.125-.143.535-.623.678-.836.143-.213.287-.178.481-.106.195.071 1.233.582 1.444.688.211.106.352.16.403.249.052.089.052.518-.092.923z" />
@@ -1199,6 +1201,7 @@
             </a>
             <a href="https://instagram.com/flamengovoleibol" class="social-icon-btn dynamic-instagram-link"
               target="_blank" rel="noopener noreferrer" aria-label="Instagram Flamengo Voleibol">
+              <span class="sr-only">Instagram Flamengo</span>
               <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
@@ -1278,6 +1281,7 @@
   <!-- BOTÓN FLOTANTE DE WHATSAPP -->
   <a href="#" class="floating-whatsapp dynamic-whatsapp-link" target="_blank" rel="noopener noreferrer"
     aria-label="WhatsApp Oficial Flamengo Voleibol">
+    <span class="sr-only">Chat Directo WhatsApp</span>
     <span class="floating-whatsapp-ping"></span>
     <svg viewBox="0 0 24 24" fill="currentColor">
       <path
