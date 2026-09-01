@@ -115,11 +115,15 @@ function initDynamicContent() {
   });
 
   document.querySelectorAll(".dynamic-instagram-link").forEach(a => {
-    a.href = config.general?.instagram || "https://instagram.com/flamengovoleibol";
+    a.href = config.general?.instagram || "https://www.instagram.com/flamengovoley/";
   });
 
   document.querySelectorAll(".dynamic-maps-link").forEach(a => {
-    a.href = config.general?.mapsUrl || "https://maps.google.com/?q=Calle+34+Sur+%23+69C-60+Bogota";
+    a.href = config.general?.mapsUrl || "https://www.google.com/maps/dir/4.603904,-74.1376/Flamengo+voley,+Cl.+34+Sur+%2369C-60,+Bogot%C3%A1/@4.6082248,-74.1435085,16z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x8e3f9f0bd5f49319:0x283ce19a9d6d62dd!2m2!1d-74.138982!2d4.613895?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D";
+  });
+
+  document.querySelectorAll(".dynamic-reviews-link").forEach(a => {
+    a.href = config.general?.googleReviewUrl || "https://g.page/r/Cd1ibZ2a4TwoEAE/review";
   });
 }
 
